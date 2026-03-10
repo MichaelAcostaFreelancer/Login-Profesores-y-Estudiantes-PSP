@@ -1,0 +1,17 @@
+# Variables de entorno con credenciales locales
+.env
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Dependencias (si usas composer en el futuro)
+vendor/
+composer.lock
