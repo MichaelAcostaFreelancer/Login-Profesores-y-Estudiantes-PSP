@@ -1,5 +1,10 @@
 # Variables de entorno con credenciales locales
 .env
+.env.local
+.env.*.local
+
+# Archivo .gitignore (configuración local)
+.gitignore
 
 # IDEs
 .vscode/
@@ -12,6 +17,14 @@
 .DS_Store
 Thumbs.db
 
-# Dependencias (si usas composer en el futuro)
+# Dependencias (si usas composer)
 vendor/
 composer.lock
+
+# Logs
+*.log
+logs/
+
+# Caché
+.cache/
+__pycache__/

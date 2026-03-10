@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: sanpablo-web
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      DB_HOST: db
+      DB_USER: ${DB_USER:-root}
+      DB_PASS: ${DB_PASS:-root}
+      DB_NAME: ${DB_NAME:-SanPablo}
+    depends_on:
+      - db
+    networks:
+      - sanpablo-net
+
+  db:
+    image: mysql:8.0
+    container_name: sanpablo-db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASS:-root}
+      MYSQL_DATABASE: ${DB_NAME:-SanPablo}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - sanpablo-net
+
+networks:
+  sanpablo-net:
+    driver: bridge
+
+volumes:
+  mysql_data:
